@@ -1,14 +1,9 @@
 import React, {useEffect, useRef} from 'react';
-import {
-	FlatList,
-	SafeAreaView,
-	ScrollView,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-	Animated,
-} from 'react-native';
+import {View} from 'react-native';
+import {Text} from 'react-native';
+import {Animated} from 'react-native';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {SharedElement} from 'react-navigation-shared-element';
 import BackIcon from '../components/BackIcon';
 import Icon from '../components/Icon';
@@ -139,7 +134,9 @@ const Detail = ({navigation, route}) => {
 };
 
 Detail.sharedElements = (route, otherRoute, showing) => {
-	return DATA.map((item) => `item.${item.id}.icon`);
+	return DATA.map((item) => {
+		return {id: `item.${item.id}.icon`, animation: 'fade', resize: 'none'};
+	});
 };
 
 export default Detail;
